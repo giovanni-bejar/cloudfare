@@ -60,17 +60,16 @@ const OrgChartComponent = () => {
             <div className="employee-detail">
                 <h3>{employee.name}</h3>
                 <p>Department: {employee.department}</p>
+                <p>Office: {employee.office}</p> 
                 <p>Role: {isManager}</p>
                 <p>Salary: {employee.salary}</p>
                 <p>Skills: {employee.skills.join(', ')}</p>
             </div>
         );
     };
-    
 
     return (
         <div className="org-chart-container">
-            Backend API : https://coding-assignment.giovannibejar122.workers.dev/
             <div> By Clicking on a name, information about the employee will be displayed </div>
             {orgData.length > 0 ? (
                 orgData.map((chartData, index) => (
