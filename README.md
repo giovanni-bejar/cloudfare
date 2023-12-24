@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+README for Cloudflare Internship Assignment: Organizational Chart Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project Overview
+This project is a dashboard designed to display an organizational chart for an internet company. It was developed as part of a software engineering internship assignment at Cloudflare. The project is divided into two main components: a backend API developed using Cloudflare Workers and a frontend React application.
 
-## Available Scripts
+Backend API
+The backend API, hosted on Cloudflare Workers, provides three main endpoints:
 
-In the project directory, you can run:
+/organization-chart: Handles GET and POST requests for retrieving and updating the organization chart.
+/employee: Handles POST requests to filter and return employee details based on specific criteria.
+/me: Returns personal information about the developer, Giovanni Bejar.
+Frontend UI
+The frontend is a React application that displays the organizational chart using the react-google-charts library. It fetches data from the backend API and provides an interactive interface to view details about each employee in the organization.
 
-### `npm start`
+Key Functionalities
+Backend API (index.js)
+async fetch(request, env, ctx): Main function handling incoming requests and routing them to the appropriate handler based on the URL path.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+handleOrgChartRequest(request, env): Handles requests to /organization-chart. It supports both GET and POST methods for retrieving and updating the organizational chart, respectively.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+handleEmployeeRequest(request, env): Processes POST requests to /employee for filtering employees based on given criteria such as name, department, salary, etc.
 
-### `npm test`
+handleMeRequest(request, env): Returns the developer's personal information, skills, and an interesting fact.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+convertCsvToJson(csvData): Converts CSV data to JSON format, suitable for storing and retrieving the organization's structure.
 
-### `npm run build`
+filterEmployees(orgChart, query): Filters the list of employees based on specified query parameters.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Frontend React Application (OrgChartComponent)
+React Hooks (useState, useEffect): Manage state and side-effects within the application.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+fetch API Calls: Fetch organization data from the backend API.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+transformToOrgChartData(data): Transforms the fetched data into a format compatible with react-google-charts.
 
-### `npm run eject`
+flattenEmployeeData(departments): Flattens the departmental data to simplify employee lookup.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+handleChartSelect(chartWrapper): Handles the selection of an employee on the chart to display detailed information.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+EmployeeDetail Component: Displays detailed information about the selected employee, including their role, department, salary, and skills.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Deployment
+The backend API is deployed on Cloudflare Workers, while the frontend React application is hosted on Cloudflare Pages.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+API URL
+https://coding-assignment.giovannibejar122.workers.dev/
 
-## Learn More
+Running the Project Locally
+To run the project locally, clone the repository, and for the frontend, run:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+bash
+Copy code
+npm install
+npm start
