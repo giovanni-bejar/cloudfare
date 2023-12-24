@@ -70,7 +70,8 @@ const OrgChartComponent = () => {
 
     return (
         <div className="org-chart-container">
-            https://coding-assignment.giovannibejar122.workers.dev/
+            Backend API : https://coding-assignment.giovannibejar122.workers.dev/
+            <div> By Clicking on a name, information about the employee will be displayed </div>
             {orgData.length > 0 ? (
                 orgData.map((chartData, index) => (
                     <div key={index} className="chart-wrapper">
